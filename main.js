@@ -1,30 +1,19 @@
-/* global $ */
-
-//Moving the Ship
-//-----------------------------------------------------------------------------------
 $(document).ready(function(){
     $("body").keydown(function(event) {
+         var xoffset = $("#player").offset().left - $("#ship").offset().left;
         if (event.which === 37) {
-            var x = $("#player").offset();
-            console.log($("#player").offset());
-            console.log(x.left);
-            $("#player").css("left", ($("#player").offset().left - 10) - x.left);
-            
-        } else if (event.which === 39) {
-            var x = $("#player").offset();
-            console.log($("#player").offset());
-            console.log(x.left);
-           $("#player").css("left", ($("#player").offset().left + 10) + x.left);
+           
+           $("#player").css("left", xoffset - 10);
         } 
-        else if(event.which === 38){
+        if(event.which === 38){
+            console.log($("#player").offset().top);
             $("#player").css("top", $("#player").offset().top - 10);
         }
-        else if(event.which === 40){
+        if (event.which === 39) {
+           $("#player").css("left", $("#player").offset().left + 10);
+        } 
+        if(event.which === 40){
             $("#player").css("top", $("#player").offset().top + 10);
-        }
-        else{
-            return;
         }
     });
 });
-//-----------------------------------------------------------------------------------
